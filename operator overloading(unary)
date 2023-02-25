@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+class Demo
+{
+int x;
+int y;
+public:
+//Demo()
+//{
+//	x=10;
+//	y=5;
+//	}
+Demo(int x,int y){
+	this->x=x;
+	this->y=y;
+}	
+
+void setdata(int x,int y){
+	this->x=x;
+	this->y=y;
+}	
+void operator++(int)
+{
+	x=x+5;
+	y=y+5;
+}
+void display(){
+	cout<<x<<" " <<y<<endl;
+}
+
+Demo operator+(Demo& d1, Demo& d2) 
+    Demo d3;
+
+    d3.feet = d1.feet + d2.feet;
+    d3.inch = d1.inch + d2.inch;
+ 
+    // Return the resulting object
+    return d3;
+}
+};
+int main()
+{
+	Demo d(10,15);
+	d.display();
+	d++;
+	d.display();
+	}
