@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <string.h>
+int main(){
+	char s[100];
+	char g[100];
+	gets(s);
+	gets(g);
+	int pin,n;
+	printf("Enter");
+	scanf("%d %d",&pin,&n);
+	int a=strlen(s);
+	int b=strlen(g);
+	int f=0;
+	int i,j;
+	if(a>b){
+		f=1;
+	}
+	if(a<b){
+		f=2;
+	}
+	if(a==b){
+		for(i=0;i<a;i++){
+			if(s[i]>g[i]){
+				f=1;
+				break;
+			}
+			if(s[i]<g[i]){
+				f=2;
+				break;
+			}
+		}
+	}
+	int u=0;
+	int arr[100];
+	while(pin!=0){
+		int h=pin%10;
+		arr[u]=h;
+		u+=1;
+		pin=pin/10;
+	}
+	int r=1;
+	char w[100];
+	if(f==1){
+		w[0]=g[b-1];
+		for(i=0;i<a;i++){
+			r+=1;
+			w[i+1]=s[i];
+		}
+		for(j=0;j<r;j++){
+			if(w[j]>=97 && w[j]<=122){
+				w[j]=w[j]-32;
+			}
+			else{
+				w[j]=w[j]+32;
+			}
+			printf("%c",w[j]);
+		}
+		printf("%d%d",arr[u-n],arr[n-1]);
+		w[r]=arr[u-n];
+		w[r+1]=arr[n-1];
+	}
+	else if(f==2){
+		w[0]=s[b-1];
+		for(i=0;i<b;i++){
+			r+=1;
+			w[i+1]=g[i];
+		}
+		for(j=0;j<r;j++){
+			if(w[j]>=97 && w[j]<=122){
+				w[j]=w[j]-32;
+			}
+			else{
+				w[j]=w[j]+32;
+			}
+			printf("%c",w[j]);
+		}
+		printf("%d%d",arr[u-n],arr[n-1]);
+		w[r]=arr[u-n];
+		w[r+1]=arr[n-1];
+	}
+}
